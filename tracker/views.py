@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.template import loader
 from django.http import HttpResponse
+from django.shortcuts import render
 
 # Create your views here.
 def get_location(request):
@@ -25,6 +26,5 @@ def get_location(request):
       return JsonResponse({'Error' : 'Error fetching Location Data'}, status = 500)
 
 def indexed_body (request):
-    template = loader.get_template('Tracker.html')
-    return HttpResponse(template.render())
+    return render(request, "Tracker.html")
     
